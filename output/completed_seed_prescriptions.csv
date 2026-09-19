@@ -4,14 +4,14 @@ RX01,2,Sinarest Tablet,,1-0-1 x 5d,cold,HIT,"Duplicate active ingredient 'Parace
 RX02,1,NimuPar-P,,1-0-1 x 3d,pain,HIT,"Product 'NimuPar-P' contains prohibited combination (Nimesulide, Paracetamol). PROHIBITED under GSR 411(E) (Effective: 2023-06-15) (supersedes EV002, EV001): Re-prohibition; supersedes stay EV002"
 RX03,1,Warf 5,5 mg,0-0-1,"AF, ongoing",HIT,Severe interaction between 'Warfarin' (Warf 5) and 'Azithromycin' (Azee 500): INR elevation; bleeding (Source: public-high-priority-2026).
 RX03,2,Azee 500,500 mg,1-0-0 x 3d,RTI,HIT,Severe interaction between 'Warfarin' (Warf 5) and 'Azithromycin' (Azee 500): INR elevation; bleeding (Source: public-high-priority-2026).
-RX04,1,Telma,,1-0-0,HTN,PARTIAL_COVERAGE,Product 'Telma' has ambiguous specification: AMBIGUOUS_STRENGTH_MULTIPLE_MATCHES. Queued in review_queue (ID: 575).
+RX04,1,Telma,,1-0-0,HTN,PARTIAL_COVERAGE,Product 'Telma' has ambiguous specification: AMBIGUOUS_STRENGTH_MULTIPLE_MATCHES. Queued in review_queue (ID: 1733).
 RX05,1,Glycomet 500,500 mg,1-0-1,T2DM,CHECKED_NO_HIT,"All prescribed products verified and passed duplicate-salt, prohibited-FDC, and severe-interaction checks."
 RX05,2,Atorva 10,10 mg,0-0-1,lipids,CHECKED_NO_HIT,"All prescribed products verified and passed duplicate-salt, prohibited-FDC, and severe-interaction checks."
 RX06,1,Augmentin 625 Duo,,1-0-1 x 5d,sinusitis,CHECKED_NO_HIT,"All prescribed products verified and passed duplicate-salt, prohibited-FDC, and severe-interaction checks."
 RX06,2,Okacet 10,10 mg,0-0-1 x 5d,,CHECKED_NO_HIT,"All prescribed products verified and passed duplicate-salt, prohibited-FDC, and severe-interaction checks."
 RX07,1,Calpol 650,650 mg,1-1-1 x 3d,fever,HIT,"Duplicate active ingredient 'Paracetamol' prescribed across 2 products: 'Calpol 650' (1950.0 mg/day via 1-1-1 x 3d), 'Crocin 650' (650.0 mg/day via SOS). Cumulative same-ingredient exposure: 2600.0 mg/day. Nearing maximum adult safe limit of 3000 mg/day."
 RX07,2,Crocin 650,650 mg,SOS,headache,HIT,"Duplicate active ingredient 'Paracetamol' prescribed across 2 products: 'Calpol 650' (1950.0 mg/day via 1-1-1 x 3d), 'Crocin 650' (650.0 mg/day via SOS). Cumulative same-ingredient exposure: 2600.0 mg/day. Nearing maximum adult safe limit of 3000 mg/day."
-RX08,1,Zqtrixon Forte,,1-0-1,(as written),UNVERIFIED_INPUT,Product 'Zqtrixon Forte' could not be verified in the national drug master or clinic formulary. Queued in review_queue (ID: 576).
+RX08,1,Zqtrixon Forte,,1-0-1,(as written),UNVERIFIED_INPUT,Product 'Zqtrixon Forte' could not be verified in the national drug master or clinic formulary. Queued in review_queue (ID: 1734).
 RX09,1,Telma-H 40,,1-0-0,HTN,HIT,"Duplicate active ingredient 'Telmisartan' prescribed across 2 products: 'Telma-H 40' (40.0 mg/day via 1-0-0), 'Telma 40' (40.0 mg/day via 0-0-1). Cumulative same-ingredient exposure: 80.0 mg/day."
 RX09,2,Telma 40,40 mg,0-0-1,HTN (evening),HIT,"Duplicate active ingredient 'Telmisartan' prescribed across 2 products: 'Telma-H 40' (40.0 mg/day via 1-0-0), 'Telma 40' (40.0 mg/day via 0-0-1). Cumulative same-ingredient exposure: 80.0 mg/day."
 RX10,1,Pan 40,40 mg,1-0-0 x 14d,GERD,CHECKED_NO_HIT,"All prescribed products verified and passed duplicate-salt, prohibited-FDC, and severe-interaction checks."
