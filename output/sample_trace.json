@@ -1,0 +1,194 @@
+{
+  "trace_id": "TRACE-RX-SAMPLE-01-1789826108",
+  "timestamp": "2026-09-19T19:25:08.132752",
+  "execution_duration_ms": 17.56,
+  "system_provenance": {
+    "system_version": "BRAHMO-AI-v1.0.0",
+    "safety_rule_version": "RULES-SAFE-2026.1",
+    "cdci_source_version": "CDCI-SUBSET-2026Q2",
+    "regulatory_gazette_version": "2026-REG-EVENT-SET",
+    "stw_corpus_version": "ICMR-STW-2026.1",
+    "local_protocol_version": "SUNRISE-SOP-CLIN-014-v2.1",
+    "load_batch_id": "BATCH-20260919-PROD01"
+  },
+  "input_prescription": [
+    {
+      "rx_id": "RX-SAMPLE-01",
+      "item_no": 1,
+      "written_product": "Dolo 650",
+      "strength_as_written": "650 mg",
+      "dose_frequency": "1-0-1 x 5d",
+      "clinical_note": "Fever and bodyache"
+    },
+    {
+      "rx_id": "RX-SAMPLE-01",
+      "item_no": 2,
+      "written_product": "Sinarest Tablet",
+      "strength_as_written": null,
+      "dose_frequency": "1-0-1 x 5d",
+      "clinical_note": "Cold symptoms"
+    }
+  ],
+  "input_clinical_question": "What is the first-line antibiotic, dose basis, and duration for acute otitis media in a child?",
+  "module_a_normalization": [
+    {
+      "raw_product": "Dolo 650",
+      "strength_as_written": "650 mg",
+      "resolved_product_id": "CD1000",
+      "canonical_brand": "Dolo 650",
+      "dose_form": "Tablet",
+      "is_fdc": false,
+      "decomposed_ingredients": [
+        {
+          "ingredient_name": "Paracetamol",
+          "strength_value": 650.0,
+          "strength_unit": "mg",
+          "confidence": 1.0,
+          "method": "CDCI_OFFICIAL_CATALOG"
+        }
+      ],
+      "normalization_confidence": 1.0,
+      "normalization_method": "EXACT_MATCH",
+      "review_queue_id": null,
+      "review_reason": null
+    },
+    {
+      "raw_product": "Sinarest Tablet",
+      "strength_as_written": null,
+      "resolved_product_id": "CD1021",
+      "canonical_brand": "Sinarest Tablet",
+      "dose_form": "Tablet",
+      "is_fdc": true,
+      "decomposed_ingredients": [
+        {
+          "ingredient_name": "Paracetamol",
+          "strength_value": 500.0,
+          "strength_unit": "mg",
+          "confidence": 1.0,
+          "method": "CDCI_OFFICIAL_CATALOG"
+        },
+        {
+          "ingredient_name": "Chlorpheniramine",
+          "strength_value": 2.0,
+          "strength_unit": "mg",
+          "confidence": 1.0,
+          "method": "CDCI_OFFICIAL_CATALOG"
+        },
+        {
+          "ingredient_name": "Phenylephrine",
+          "strength_value": 10.0,
+          "strength_unit": "mg",
+          "confidence": 1.0,
+          "method": "CDCI_OFFICIAL_CATALOG"
+        }
+      ],
+      "normalization_confidence": 1.0,
+      "normalization_method": "EXACT_MATCH",
+      "review_queue_id": null,
+      "review_reason": null
+    }
+  ],
+  "module_a_safety_rail": {
+    "rx_id": "RX-SAMPLE-01",
+    "overall_state": "HIT",
+    "findings": [
+      {
+        "check_type": "DUPLICATE_ACTIVE_INGREDIENT",
+        "state": "HIT",
+        "severity": "CRITICAL",
+        "evidence": "Duplicate active ingredient 'Paracetamol' prescribed across 2 products: 'Dolo 650' (1300.0 mg/day via 1-0-1 x 5d), 'Sinarest Tablet' (1000.0 mg/day via 1-0-1 x 5d). Cumulative same-ingredient exposure: 2300.0 mg/day. Nearing maximum adult safe limit of 3000 mg/day.",
+        "regulatory_citation": null,
+        "effective_date": null,
+        "rule_version": "RULES-SAFE-2026.1",
+        "data_version": "CDCI-SUBSET-2026Q2"
+      }
+    ],
+    "cumulative_daily_exposures": {
+      "Paracetamol": {
+        "total_daily_exposure_mg": 2300.0,
+        "contributing_products": [
+          "Dolo 650",
+          "Sinarest Tablet"
+        ],
+        "exposure_details": [
+          {
+            "salt_display_name": "Paracetamol",
+            "written_product": "Dolo 650",
+            "strength_per_dose": 650.0,
+            "strength_unit": "mg",
+            "daily_multiplier": 2.0,
+            "daily_total": 1300.0,
+            "is_prn": false,
+            "dose_frequency": "1-0-1 x 5d"
+          },
+          {
+            "salt_display_name": "Paracetamol",
+            "written_product": "Sinarest Tablet",
+            "strength_per_dose": 500.0,
+            "strength_unit": "mg",
+            "daily_multiplier": 2.0,
+            "daily_total": 1000.0,
+            "is_prn": false,
+            "dose_frequency": "1-0-1 x 5d"
+          }
+        ]
+      },
+      "Chlorpheniramine": {
+        "total_daily_exposure_mg": 4.0,
+        "contributing_products": [
+          "Sinarest Tablet"
+        ],
+        "exposure_details": [
+          {
+            "salt_display_name": "Chlorpheniramine",
+            "written_product": "Sinarest Tablet",
+            "strength_per_dose": 2.0,
+            "strength_unit": "mg",
+            "daily_multiplier": 2.0,
+            "daily_total": 4.0,
+            "is_prn": false,
+            "dose_frequency": "1-0-1 x 5d"
+          }
+        ]
+      },
+      "Phenylephrine": {
+        "total_daily_exposure_mg": 20.0,
+        "contributing_products": [
+          "Sinarest Tablet"
+        ],
+        "exposure_details": [
+          {
+            "salt_display_name": "Phenylephrine",
+            "written_product": "Sinarest Tablet",
+            "strength_per_dose": 10.0,
+            "strength_unit": "mg",
+            "daily_multiplier": 2.0,
+            "daily_total": 20.0,
+            "is_prn": false,
+            "dose_frequency": "1-0-1 x 5d"
+          }
+        ]
+      }
+    },
+    "unresolved_items": []
+  },
+  "module_b_grounded_qa": {
+    "query": "What is the first-line antibiotic, dose basis, and duration for acute otitis media in a child?",
+    "answer_text": "For Acute Otitis Media in a child OPD presentation:\n\u2022 First-line antibiotic: Amoxicillin 40 mg/kg/day in three divided doses for 5 days.\n\u2022 Severe presentation or age <6 months: Amoxicillin\u2013Clavulanate 40 mg/kg/day (amoxicillin component).\n\u2022 Pain management: Paracetamol 15 mg/kg per dose every 6 h as needed.\nCitation: [STW-PED-01 v2024.1: FIRST-LINE MANAGEMENT, p.1]",
+    "citations": [
+      {
+        "source_document": "STW-PED-01",
+        "section_title": "FIRST-LINE MANAGEMENT",
+        "page_anchor": "p.1",
+        "version": "2024.1",
+        "effective_date": "2024-05-01",
+        "is_clinic_internal": false
+      }
+    ],
+    "is_abstained": false,
+    "abstention_reason": null,
+    "conflict_identified": false,
+    "conflict_notes": null,
+    "refused_dose_calculation": false
+  }
+}

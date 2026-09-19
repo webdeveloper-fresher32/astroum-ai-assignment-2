@@ -1,0 +1,224 @@
+{
+  "total_questions": 11,
+  "accuracy_percentage": 100.0,
+  "correct_answers": 9,
+  "honest_abstentions": 2,
+  "failures": 0,
+  "results": [
+    {
+      "question_id": 1,
+      "query": "What is the first-line antibiotic, dose basis, and duration for acute otitis media in a child?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "For Acute Otitis Media in a child OPD presentation:\n\u2022 First-line antibiotic: Amoxicillin 40 mg/kg/day in three divided doses for 5 days.\n\u2022 Severe presentation or age <6 months: Amoxicillin\u2013Clavulanate 40 mg/kg/day (amoxicillin component).\n\u2022 Pain management: Paracetamol 15 mg/kg per dose every 6 h as needed.\nCitation: [STW-PED-01 v2024.1: FIRST-LINE MANAGEMENT, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-PED-01",
+          "section_title": "FIRST-LINE MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2024.1",
+          "effective_date": "2024-05-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 2,
+      "query": "A 6-year-old with non-severe community pneumonia: what is the amoxicillin dose exactly as the workflow states it? (Dose question \u2014 retrieve and cite the text as written; do not compute for any specific child.)",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "Per the Standard Treatment Workflow for Community Pneumonia \u2014 Child OPD (Non-severe):\n\u2022 Amoxicillin dose verbatim: 'Amoxicillin 40 mg/kg/day in three divided doses for 5 days'\nCitation: [STW-PED-02 v2023.2: FIRST-LINE MANAGEMENT, p.1]\n\n[MANDATORY SAFETY FENCE \u2014 Law 12]: The system retrieves and cites the clinical dosing formula exactly as written in the workflow. Patient-specific dose calculation (e.g. calculating total mg dose for a 6-year-old child) is strictly fenced and refused; the treating clinician must independently calculate weight-based pediatric doses.",
+      "citations": [
+        {
+          "source_document": "STW-PED-02",
+          "section_title": "FIRST-LINE MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2023.2",
+          "effective_date": "2023-11-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 3,
+      "query": "What is the first-line initial drug therapy for newly diagnosed adult hypertension? (Note: the pack may contain more than one edition of this workflow.)",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "The STW pack contains two distinct historical editions for Hypertension Initial Management:\n\n1. CURRENT GUIDANCE \u2014 STW-GP-02 Version 2025.2 (Effective: 2025-06-01):\n\u2022 First-line initial monotherapy: Start Amlodipine 5 mg once daily OR Telmisartan 40 mg once daily.\n\u2022 Uncontrolled at 4 weeks: Combine Amlodipine + Telmisartan.\n\u2022 Still uncontrolled: Add Hydrochlorothiazide 12.5 mg.\nCitation: [STW-GP-02 v2025.2: FIRST-LINE MANAGEMENT (CURRENT), p.1]\n\n2. ARCHIVE / SUPERSEDED GUIDANCE \u2014 STW-GP-02 Version 2021.1 (Effective: 2021-02-01):\n\u2022 First-line initial monotherapy: Start Atenolol 50 mg once daily as initial monotherapy.\n\u2022 Stated Alternative: Hydrochlorothiazide 25 mg once daily.\n\u2022 Review at 6 weeks.\n\u2022 Status: Explicitly superseded by Version 2025.2.\nCitation: [STW-GP-02 v2021.1: FIRST-LINE MANAGEMENT (THIS 2021 EDITION), p.1]\n\n[NOTE ON DIVERGENCE]: Per Binding Law, both editions are presented with their respective effective dates; the system never synthesizes a third blended recommendation.",
+      "citations": [
+        {
+          "source_document": "STW-GP-02",
+          "section_title": "FIRST-LINE MANAGEMENT (CURRENT)",
+          "page_anchor": "p.1",
+          "version": "2025.2",
+          "effective_date": "2025-06-01",
+          "is_clinic_internal": false
+        },
+        {
+          "source_document": "STW-GP-02",
+          "section_title": "FIRST-LINE MANAGEMENT (THIS 2021 EDITION)",
+          "page_anchor": "p.1",
+          "version": "2021.1",
+          "effective_date": "2021-02-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 4,
+      "query": "Which analgesic class must be avoided in suspected dengue, and why?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "In suspected Dengue Fever in OPD management:\n\u2022 AVOID: Ibuprofen, Diclofenac, Aspirin and all NSAIDs.\n\u2022 Stated Reason: Bleeding risk.\n\u2022 Recommended Analgesic / Antipyretic: Paracetamol 500\u2013650 mg every 6 h for fever (maximum 3 g/day adult) with adequate oral fluids.\nCitation: [STW-GP-04 v2024.2: OPD MANAGEMENT, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-GP-04",
+          "section_title": "OPD MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2024.2",
+          "effective_date": "2024-07-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 5,
+      "query": "What are the ORS volumes after each loose stool for a child aged 2\u201310 years, and what zinc course accompanies it?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "For Acute Gastroenteritis in Child OPD:\n\u2022 ORS volume after every loose stool:\n  - 100\u2013200 ml for children aged 2\u201310 years\n  - 50\u2013100 ml for children aged <2 years\n\u2022 Zinc supplementation course:\n  - Zinc 20 mg once daily for 14 days (10 mg once daily if age <6 months)\n\u2022 Feeding: Continue feeding; ondansetron 0.15 mg/kg single dose only for persistent vomiting.\n\u2022 DO NOT: No routine antibiotics; no antimotility agents in children.\nCitation: [STW-PED-03 v2024.1: FIRST-LINE MANAGEMENT, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-PED-03",
+          "section_title": "FIRST-LINE MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2024.1",
+          "effective_date": "2024-03-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 6,
+      "query": "Which red flags in acute low back pain mandate imaging or referral?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "Red Flags in Acute Low Back Pain that mandate imaging or referral:\n\u2022 Saddle anaesthesia, bladder/bowel involvement, progressive weakness\n\u2022 Fever with spinal tenderness\n\u2022 Significant trauma\n\u2022 Age >65 with new pain + weight loss\nCitation: [STW-ORT-01 v2023.1: RED FLAGS \u2014 IMAGE/REFER, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-ORT-01",
+          "section_title": "RED FLAGS \u2014 IMAGE/REFER",
+          "page_anchor": "p.1",
+          "version": "2023.1",
+          "effective_date": "2023-09-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 7,
+      "query": "Which urinary antibiotic is avoided at 36+ weeks of pregnancy, and what is the stated alternative?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "In Urinary Tract Infection in Pregnancy:\n\u2022 Antibiotic avoided at 36+ weeks: Nitrofurantoin 100 mg twice daily for 5 days is first-line earlier in pregnancy, but MUST BE AVOIDED at 36+ weeks (near term) due to the risk of neonatal hemolysis.\n\u2022 Stated Alternative: Cefixime 200 mg twice daily for 5 days.\n\u2022 Contraindicated throughout pregnancy: Ciprofloxacin and other fluoroquinolones.\nCitations: [STW-GYN-02 v2023.1: FIRST-LINE MANAGEMENT, p.1] [STW-GYN-02 v2023.1: AVOID, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-GYN-02",
+          "section_title": "FIRST-LINE MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2023.1",
+          "effective_date": "2023-06-01",
+          "is_clinic_internal": false
+        },
+        {
+          "source_document": "STW-GYN-02",
+          "section_title": "AVOID",
+          "page_anchor": "p.1",
+          "version": "2023.1",
+          "effective_date": "2023-06-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 8,
+      "query": "At what HbA1c threshold at diagnosis does the workflow add a second agent to metformin, and which agent?",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "In Type 2 Diabetes Diagnosis & Initiation (Adult OPD):\n\u2022 Baseline first-line: Metformin 500 mg once daily with dinner; up-titrate weekly to 500 mg twice daily as tolerated.\n\u2022 HbA1c threshold at diagnosis for adding a second agent: HbA1c \u2265 8.5% at diagnosis.\n\u2022 Second agent added: Glimepiride 1 mg before breakfast.\nCitation: [STW-GP-03 v2024.1: FIRST-LINE MANAGEMENT, p.1]",
+      "citations": [
+        {
+          "source_document": "STW-GP-03",
+          "section_title": "FIRST-LINE MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2024.1",
+          "effective_date": "2024-09-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 9,
+      "query": "What is the first-line prophylactic drug for migraine in adults?",
+      "verdict": "CORRECT_ABSTENTION",
+      "passed": true,
+      "is_abstained": true,
+      "answer_text": "Abstention: The provided clinical corpus does not include and does not contain a validated ICMR Standard Treatment Workflow or clinical protocol for 'Adult Migraine Prophylaxis'. The available corpus covers GP (Pharyngitis, Hypertension, T2DM, Dengue), Gynaecology (Anemia, UTI, PCOS), Orthopaedics (Back Pain, Knee OA), Paediatrics (Otitis Media, Pneumonia, Gastroenteritis), and local acute fever. Per Law 2 & Gate G6, the system strictly abstains from guessing ungrounded clinical recommendations.",
+      "citations": [],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 10,
+      "query": "What is the standard drug regimen for newly diagnosed pulmonary tuberculosis?",
+      "verdict": "CORRECT_ABSTENTION",
+      "passed": true,
+      "is_abstained": true,
+      "answer_text": "Abstention: The provided clinical corpus does not include and does not contain a validated ICMR Standard Treatment Workflow or clinical protocol for 'Pulmonary Tuberculosis'. The available corpus covers GP (Pharyngitis, Hypertension, T2DM, Dengue), Gynaecology (Anemia, UTI, PCOS), Orthopaedics (Back Pain, Knee OA), Paediatrics (Otitis Media, Pneumonia, Gastroenteritis), and local acute fever. Per Law 2 & Gate G6, the system strictly abstains from guessing ungrounded clinical recommendations.",
+      "citations": [],
+      "failure_reasons": []
+    },
+    {
+      "question_id": 11,
+      "query": "Per the clinic's own protocol, when are empirical antibiotics started in adult acute undifferentiated fever \u2014 and does the national workflow pack say the same? Label your sources.",
+      "verdict": "CORRECT",
+      "passed": true,
+      "is_abstained": false,
+      "answer_text": "Comparison of Local Clinic Protocol vs National Standard Treatment Workflows:\n\n1. CLINIC-LEVEL LOCAL PROTOCOL \u2014 Sunrise Multi-speciality Clinic (SOP-CLIN-014 v2.1, Approved 2026-03-10):\n\u2022 Empirical Antibiotic Rule: 'Day 2: if fever persists beyond 48 hours without a localizing source, start empirical Azithromycin 500 mg once daily for 3 days.'\n\u2022 Scope: Adults (\u226518y) presenting to Sunrise OPD with acute fever < 7 days.\n\u2022 IMPORTANT CLASSIFICATION: This is an internal clinic document. It is NOT national guidance.\nCitation: [SUNRISE-SOP-CLIN-014 v2.1 (Internal Clinic Protocol): Step 2: Empirical Antibiotic Rule (>48h Persistent Fever), p.1]\n\n2. NATIONAL GUIDANCE COMPARISON (ICMR STW Pack):\n\u2022 The national ICMR STW pack does NOT recommend routine empirical antibiotics for undifferentiated fever.\n\u2022 For Dengue Fever (STW-GP-04 v2024.2), care is supportive (Paracetamol 500\u2013650 mg q6h, max 3 g/day) and NSAIDs are strictly avoided.\n\u2022 For Acute Pharyngitis (STW-GP-01 v2025.1), antibiotics (Amoxicillin 500 mg TDS x 5d) are used only when Centor criteria \u22653 indicates streptococcal origin; viral sore throat receives no antibiotics.\n\u2022 For Childhood Gastroenteritis (STW-PED-03 v2024.1), routine antibiotics are explicitly prohibited.\n\n[DIVERGENCE DISCLOSURE]: Major divergence identified. Sunrise Clinic SOP mandates empirical Azithromycin 500 mg after 48 hours of fever, whereas national STWs explicitly counsel against routine empirical antibiotic usage without localized bacterial signs.",
+      "citations": [
+        {
+          "source_document": "SUNRISE-SOP-CLIN-014",
+          "section_title": "Step 2: Empirical Antibiotic Rule (>48h Persistent Fever)",
+          "page_anchor": "p.1",
+          "version": "2.1",
+          "effective_date": "2026-03-10",
+          "is_clinic_internal": true
+        },
+        {
+          "source_document": "STW-GP-04",
+          "section_title": "OPD MANAGEMENT",
+          "page_anchor": "p.1",
+          "version": "2024.2",
+          "effective_date": "2024-07-01",
+          "is_clinic_internal": false
+        }
+      ],
+      "failure_reasons": []
+    }
+  ]
+}
