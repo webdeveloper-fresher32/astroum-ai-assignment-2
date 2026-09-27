@@ -47,7 +47,11 @@ python3 -m src.module_c.e2e_trace
 
 ### Step 7: Launch Doctor Inspection Web Dashboard (Optional Stretch)
 
-![Doctor UI Demo](assets/doctor_ui_demo.webp)
+**Screenshot:**
+![Clinical UI Screenshot](assets/clinical_ui_screenshot.png)
+
+**Live Demo:**
+![Clinical UI Demo](assets/clinical_ui_demo.webp)
 ```bash
 python3 -m src.stretch.doctor_ui
 ```
