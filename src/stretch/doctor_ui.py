@@ -55,86 +55,263 @@ def get_dashboard():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRAHMO Clinical AI — Doctor Safety & Grounding Dashboard</title>
+    <title>BRAHMO Clinical AI — Doctor Inspection</title>
     <style>
         :root {
-            --bg: #0b0f19;
-            --surface: #151c2e;
-            --surface-border: #232f48;
-            --text: #f0f4fc;
-            --text-muted: #8c9eb5;
-            --primary: #3b82f6;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --success: #10b981;
-            --accent: #8b5cf6;
+            /* Clinical, credible, calm palette */
+            --bg-color: #FAFAFA;
+            --surface-color: #FFFFFF;
+            --border-color: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --accent-color: #2563EB;
+            --danger-bg: #FEF2F2;
+            --danger-text: #B91C1C;
+            --danger-border: #FCA5A5;
+            --success-bg: #F0FDF4;
+            --success-text: #15803D;
+            --success-border: #86EFAC;
+            --warning-bg: #FFFBEB;
+            --warning-text: #B45309;
+            --warning-border: #FCD34D;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 24px; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--surface-border); padding-bottom: 16px; margin-bottom: 24px; }
-        .header h1 { font-size: 22px; font-weight: 700; color: #fff; }
-        .header .badge { background: #1e293b; color: var(--primary); padding: 6px 12px; border-radius: 9999px; font-size: 13px; font-weight: 600; border: 1px solid var(--surface-border); }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 12px; padding: 20px; }
-        .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-        textarea, input, select { width: 100%; background: #0f1523; border: 1px solid var(--surface-border); color: #fff; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
-        button { background: var(--primary); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        button:hover { opacity: 0.9; }
-        .verdict-box { margin-top: 14px; padding: 14px; border-radius: 8px; background: #0f1523; border: 1px solid var(--surface-border); }
-        .verdict-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
-        .state-HIT { background: #ef444422; color: var(--danger); border: 1px solid var(--danger); }
-        .state-CHECKED_NO_HIT { background: #10b98122; color: var(--success); border: 1px solid var(--success); }
-        .state-UNVERIFIED_INPUT { background: #ef444422; color: var(--danger); border: 1px solid var(--danger); }
-        .state-PARTIAL_COVERAGE { background: #f59e0b22; color: var(--warning); border: 1px solid var(--warning); }
-        .finding-item { font-size: 13px; margin-bottom: 8px; line-height: 1.5; color: #cbd5e1; }
-        .citation-tag { display: inline-block; background: #1e293b; color: #93c5fd; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-top: 6px; }
-        .full-width { grid-column: span 2; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .header {
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        .header-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 32px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .card-full {
+            grid-column: 1 / -1;
+        }
+
+        .card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            margin-bottom: 16px;
+            background: #F8FAFC;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: #FFF;
+        }
+
+        button {
+            background-color: var(--text-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0F172A;
+        }
+
+        /* Results / Verdicts */
+        .result-container {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .verdict-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid transparent;
+        }
+
+        .state-HIT { background: var(--danger-bg); color: var(--danger-text); border-color: var(--danger-border); }
+        .state-CHECKED_NO_HIT { background: var(--success-bg); color: var(--success-text); border-color: var(--success-border); }
+        .state-PARTIAL_COVERAGE { background: var(--warning-bg); color: var(--warning-text); border-color: var(--warning-border); }
+        .state-UNVERIFIED_INPUT { background: var(--danger-bg); color: var(--danger-text); border-color: var(--danger-border); }
+
+        .finding-row {
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .finding-row:last-child {
+            border-bottom: none;
+        }
+
+        .citation-tag {
+            display: inline-block;
+            background: #F1F5F9;
+            color: var(--text-secondary);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 8px;
+            margin-right: 4px;
+            font-family: ui-monospace, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .reason-code {
+            font-family: ui-monospace, monospace;
+            background: #F1F5F9;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div>
-            <h1>BRAHMO Clinical AI — Doctor Inspection Surface</h1>
-            <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Deterministic Safety Rail (Pure Lookup) & Grounded Clinical RAG with ICMR Citations</p>
-        </div>
-        <div class="badge">Rule: RULES-SAFE-2026.1 · CDCI 2026Q2 · 8-State Mandate</div>
-    </div>
+    <div class="container">
+        <header class="header">
+            <h1>BRAHMO Clinical Interface</h1>
+            <div class="header-meta">CDCI 2026Q2 • Ruleset: SAFE-2026.1</div>
+        </header>
 
-    <div class="grid">
-        <!-- Module A: Prescription Safety Rail -->
-        <div class="card">
-            <h2>🛡️ Prescription Safety Rail (Module A)</h2>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Test multi-item prescriptions for duplicate active ingredients, prohibited FDCs, and severe interactions.</p>
-            <textarea id="rx-input" rows="4">Dolo 650 (650 mg, 1-0-1 x 5d)
+        <div class="grid">
+            <!-- Prescription Rail -->
+            <section class="card">
+                <h2>Prescription Safety Rail</h2>
+                <p class="card-desc">Deterministic evaluation against national FDC and interaction rules.</p>
+                
+                <label for="rx-input">Draft Prescription</label>
+                <textarea id="rx-input" rows="4">Dolo 650 (650 mg, 1-0-1 x 5d)
 Sinarest Tablet (1-0-1 x 5d)</textarea>
-            <button onclick="runRxCheck()">Check Medication Safety</button>
+                
+                <button onclick="runRxCheck()">Evaluate Safety</button>
 
-            <div id="rx-output" class="verdict-box" style="display:none;">
-                <div id="rx-badge" class="verdict-badge"></div>
-                <div id="rx-findings"></div>
-            </div>
-        </div>
+                <div id="rx-output" class="result-container">
+                    <div id="rx-badge" class="verdict-badge"></div>
+                    <div id="rx-findings"></div>
+                </div>
+            </section>
 
-        <!-- Module B: Grounded Clinical Q&A -->
-        <div class="card">
-            <h2>📚 Grounded Clinical Assistant (Module B)</h2>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Ask clinical guideline questions grounded strictly in the 13 ICMR STWs & local protocol.</p>
-            <input type="text" id="qa-input" value="Which analgesic class must be avoided in suspected dengue, and why?" />
-            <button onclick="runQA()">Query Clinical Guidelines</button>
+            <!-- Grounded RAG -->
+            <section class="card">
+                <h2>Clinical Guidelines</h2>
+                <p class="card-desc">Query national STWs. Requires strict source grounding.</p>
+                
+                <label for="qa-input">Clinical Question</label>
+                <input type="text" id="qa-input" value="Which analgesic class must be avoided in suspected dengue, and why?" />
+                
+                <button onclick="runQA()">Query Knowledge Base</button>
 
-            <div id="qa-output" class="verdict-box" style="display:none;">
-                <div id="qa-text" style="font-size: 13px; line-height: 1.6; white-space: pre-wrap;"></div>
-                <div id="qa-citations" style="margin-top: 10px;"></div>
-            </div>
-        </div>
+                <div id="qa-output" class="result-container">
+                    <div id="qa-text" style="font-size: 14px; white-space: pre-wrap; margin-bottom: 12px;"></div>
+                    <div id="qa-citations"></div>
+                </div>
+            </section>
 
-        <!-- Ambiguity Review Queue -->
-        <div class="card full-width">
-            <h2>🔍 Ambiguity Review Queue (Law 6: Zero Silent Guessing)</h2>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Uncertain or unrecognized drugs are never silently auto-resolved. They are queued here with structured reason codes.</p>
-            <div id="queue-list" style="font-size: 13px; max-height: 250px; overflow-y: auto;">
-                Loading review queue...
-            </div>
+            <!-- Review Queue -->
+            <section class="card card-full">
+                <h2>Human-in-the-Loop Review Queue</h2>
+                <p class="card-desc">Ambiguous or unverified inputs awaiting clinician resolution. No silent automated guessing.</p>
+                
+                <div id="queue-list" style="overflow-x: auto;">
+                    Loading review queue...
+                </div>
+            </section>
         </div>
     </div>
 
@@ -165,11 +342,11 @@ Sinarest Tablet (1-0-1 x 5d)</textarea>
             document.getElementById('rx-output').style.display = 'block';
             const badge = document.getElementById('rx-badge');
             badge.className = 'verdict-badge state-' + data.overall_state;
-            badge.innerText = 'VERDICT: ' + data.overall_state;
+            badge.innerText = 'STATUS: ' + data.overall_state;
 
             let html = '';
             data.findings.forEach(f => {
-                html += `<div class="finding-item"><b>[${f.state}] ${f.check_type}:</b> ${f.evidence}</div>`;
+                html += `<div class="finding-row"><strong>${f.check_type}:</strong> ${f.evidence}</div>`;
             });
             document.getElementById('rx-findings').innerHTML = html;
         }
@@ -188,7 +365,7 @@ Sinarest Tablet (1-0-1 x 5d)</textarea>
 
             let citHtml = '';
             data.citations.forEach(c => {
-                citHtml += `<div class="citation-tag">📌 ${c.source_document} v${c.version}: ${c.section_title} (${c.page_anchor})</div> `;
+                citHtml += `<span class="citation-tag">${c.source_document} v${c.version} (${c.page_anchor})</span>`;
             });
             document.getElementById('qa-citations').innerHTML = citHtml;
         }
@@ -196,14 +373,17 @@ Sinarest Tablet (1-0-1 x 5d)</textarea>
         async function loadQueue() {
             const res = await fetch('/api/review-queue');
             const data = await res.json();
-            let html = `<div style="margin-bottom: 10px;"><b>Pending Reason Summary:</b> `;
-            for (const [k, v] of Object.entries(data.counts)) {
-                html += `<span style="background:#1e293b; padding:3px 8px; border-radius:4px; margin-right:8px;">${k}: ${v}</span>`;
-            }
-            html += `</div><table style="width:100%; border-collapse: collapse; text-align:left; font-size:12px;">`;
-            html += `<tr style="border-bottom:1px solid var(--surface-border); color:var(--text-muted);"><th style="padding:6px;">ID</th><th>Raw Text</th><th>Reason Code</th><th>Confidence</th><th>Status</th></tr>`;
+            
+            let html = `<table>`;
+            html += `<tr><th>Queue ID</th><th>Input String</th><th>Reason Code</th><th>Confidence</th><th>Status</th></tr>`;
             data.items.slice(0, 10).forEach(it => {
-                html += `<tr style="border-bottom:1px solid #1a2234;"><td style="padding:6px;">#${it.queue_id}</td><td>${it.raw_input_text}</td><td><code>${it.reason_code}</code></td><td>${(it.confidence_score*100).toFixed(0)}%</td><td><span style="color:var(--warning);">${it.status}</span></td></tr>`;
+                html += `<tr>
+                    <td>#${it.queue_id}</td>
+                    <td>${it.raw_input_text}</td>
+                    <td><span class="reason-code">${it.reason_code}</span></td>
+                    <td>${(it.confidence_score*100).toFixed(0)}%</td>
+                    <td style="color: var(--warning-text);">${it.status}</td>
+                </tr>`;
             });
             html += `</table>`;
             document.getElementById('queue-list').innerHTML = html;
