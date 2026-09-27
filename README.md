@@ -47,6 +47,9 @@ python3 -m src.module_c.e2e_trace
 
 ### Step 7: Launch Doctor Inspection Web Dashboard (Optional Stretch)
 
+**Full Voiceover Demo Video:**
+[Watch the full 5-minute system walkthrough here](assets/demo_video.mov)
+
 **Screenshot:**
 ![Clinical UI Screenshot](assets/clinical_ui_screenshot.png)
 

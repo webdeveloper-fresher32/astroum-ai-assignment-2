@@ -19,3 +19,6 @@ htmlcov/
 ._*
 .Spotlight-V100
 .Trashes
+
+*.mov
+*.mp4
